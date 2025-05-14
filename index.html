@@ -49,6 +49,14 @@
     button:hover {
       background: #22c55e;
     }
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+    .controls button {
+      width: 60px;
+    }
   </style>
 </head>
 <body>
@@ -66,6 +74,12 @@
       <p>Spieler: <span id="player"></span></p>
       <p>Punkte: <span id="score">0</span></p>
       <canvas id="gameCanvas" width="400" height="400"></canvas>
+      <div class="controls">
+        <button onclick="changeDirectionMobile('LEFT')">⬅️</button>
+        <button onclick="changeDirectionMobile('UP')">⬆️</button>
+        <button onclick="changeDirectionMobile('DOWN')">⬇️</button>
+        <button onclick="changeDirectionMobile('RIGHT')">➡️</button>
+      </div>
     </div>
   </div>
 
@@ -103,6 +117,13 @@
       else if (e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
       else if (e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
       else if (e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+    }
+
+    function changeDirectionMobile(dir) {
+      if (dir === "LEFT" && direction !== "RIGHT") direction = "LEFT";
+      else if (dir === "UP" && direction !== "DOWN") direction = "UP";
+      else if (dir === "RIGHT" && direction !== "LEFT") direction = "RIGHT";
+      else if (dir === "DOWN" && direction !== "UP") direction = "DOWN";
     }
 
     function createFood() {
